@@ -15,7 +15,6 @@
 
   <ItemGroup>
     <Compile Remove="Actions.cs" />
-    <Compile Remove="MyState.cs" />
   </ItemGroup>
 
   <ItemGroup>

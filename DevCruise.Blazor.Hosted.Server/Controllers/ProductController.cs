@@ -4,7 +4,7 @@ using DevCruise.Blazor.Shared;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 
-namespace DevCruise.Blazor.Server.Controllers
+namespace DevCruise.Blazor.Hosted.Server.Controllers
 {
     [Route("api/[controller]")]
     public class ProductController : Controller

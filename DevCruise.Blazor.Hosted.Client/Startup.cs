@@ -11,12 +11,16 @@ namespace DevCruise.Blazor.Hosted.Client
     {
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddReduxStore<MyState,IAction>(new MyState(), Reducers.RootReducer);
+            services.AddReduxStore<MyStateBase,IAction>(new MyState(), Reducers<MyStateBase>.RootReducer);
         }
 
         public void Configure(IBlazorApplicationBuilder app)
         {
             app.AddComponent<App>("app");
         }
+    }
+
+    public class MyState:MyStateBase
+    {
     }
 }

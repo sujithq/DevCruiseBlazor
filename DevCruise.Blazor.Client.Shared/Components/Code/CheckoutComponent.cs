@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Blazor.Services;
 
 namespace DevCruise.Blazor.Client.Shared.Components.Code
 {
-    public class CheckoutComponent : ReduxComponent<MyState, IAction>
+    public class CheckoutComponent : ReduxComponent<MyStateBase, IAction>
     {
         [Inject]
         private IUriHelper UriHelper { get; set; }

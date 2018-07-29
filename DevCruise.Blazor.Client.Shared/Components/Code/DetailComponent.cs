@@ -16,9 +16,6 @@ namespace DevCruise.Blazor.Client.Shared.Components.Code
         [Parameter]
         private string Id { get; set; }
 
-        [Parameter] 
-        protected string ApiRoot { get; set; } = ""; 
-
         protected Product Product { get; private set; }
 
         //private string Description { get; set; }
@@ -50,7 +47,7 @@ namespace DevCruise.Blazor.Client.Shared.Components.Code
             //Id = Microsoft.AspNetCore.WebUtilities.QueryHelpers.ParseQuery(uri.Query).TryGetValue("id", out var id) ? id.First() : "";
             //Id = HttpUtility.UrlEncode(Id);
 
-            Product = await Http.GetJsonAsync<Product>($"{ApiRoot}/api/product/{Category}/{Id}");
+            Product = await Http.GetJsonAsync<Product>($"{State.ApiRoot}/api/product/{Category}/{Id}");
             //Description = HttpUtility.HtmlDecode(Product.Description);
         }
 

@@ -2,7 +2,7 @@
 @using Microsoft.AspNetCore.Blazor.Components
 @page "/detail/{category}/{id}"
 @addTagHelper *, DevCruise.Blazor.Client.Shared
-<DetailComponent Category="@Category" Id="@HttpUtility.UrlEncode(Id)" ApiRoot="https://devcruiseblazorhostedserver.azurewebsites.net/"></DetailComponent>
+<DetailComponent Category="@Category" Id="@HttpUtility.UrlEncode(Id)"></DetailComponent>
 @functions
 {
 
