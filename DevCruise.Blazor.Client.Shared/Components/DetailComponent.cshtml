@@ -1,0 +1,51 @@
+@using System.Web
+@using DevCruise.Blazor.Shared
+@using Microsoft.AspNetCore.Blazor
+@inherits DevCruise.Blazor.Client.Shared.Components.Code.DetailComponent
+
+@if (Product == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+
+    <div class="container">
+        <div class="row">
+            <div class="col-4">
+                <div class="card border-0">
+                    <img class="card-img-top" src="@Product.LargeImage" alt="@Product.Title">
+                </div>
+            </div>
+            <div class="col-8">
+                <div class="card border-0">
+                    <div class="card-body">
+                        <h5 class="card-title align-self-center">@Product.Title</h5>
+                        <p class="card-text align-self-center">
+                            <div class="form-group row">
+                                <label for="price" class="col-2 col-form-label">Price</label>
+                                <div class="col-auto">
+                                    <input type="text" id="price" readonly class="form-control-plaintext" value="@($"{Product.Price:C2}")">
+                                </div>
+                            </div>
+                        </p>
+                        <p>
+                            <SizeListComponent Label="Size" Page="@PageEnum.Detail" ShowLabel="true" ParentCallback=@SizeChanged></SizeListComponent>
+                        </p>
+                        <p>
+                            <QuantityListComponent Label="Quantity" Page="@PageEnum.Detail" ShowLabel="true" ParentCallback=@QuantityChanged></QuantityListComponent>
+                        </p>
+                        <h5 class="card-title align-content-center my-2">Description:</h5>
+                        <p class="card-text">
+                            @((MarkupString)HttpUtility.HtmlDecode(Product.Description))
+                        </p>
+                        <p>
+                            <button type="button" class="btn btn-outline-dark rounded-0" onclick=@AddToBasket>ADD TO BASKET</button>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+}

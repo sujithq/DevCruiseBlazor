@@ -1,0 +1,51 @@
+﻿@using System.Web
+
+@inherits DevCruise.Blazor.Client.Shared.Components.Code.ShopComponent
+
+@if (Products == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <div class="container">
+
+        <div class="card">
+            <img class="card-img-top" src="@ImageSource" alt="@Description">
+            <div class="card-title align-self-center mt-4">@Description</div>
+            <div class="card-subtitle align-self-center">
+                <small class="text-muted">(@Products.Count() items)</small>
+            </div>
+            <div class="card-body">
+                <div class="container">
+                    <div class="row">
+                        @foreach (var product in Products)
+                        {
+                            <div class="col-4 px-0">
+                                <a href="/detail/@product.Category/@HttpUtility.UrlEncode(product.Name)" class="border-0 p-0 btn btn-light">
+
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="row justify-content-center">
+                                                <h6 class="card-title align-self-center">@product.Title</h6>
+                                            </div>
+                                            <img class="card-img-top" src="@product.Image" alt="@product.Title">
+                                            <div class="row justify-content-center">
+                                                <small class="text-muted align-self-center">@($"{product.Price:C2}")</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-auto alert alert-dark">
+                    DEMO ONLY
+                </div>
+            </div>
+        </div>
+    </div>
+}

@@ -1,0 +1,42 @@
+﻿@inherits DevCruise.Blazor.Client.Shared.Components.Code.NavMenu
+<div class="top-row pl-4 navbar navbar-dark">
+    <a class="navbar-brand" href="">DevCruise Blazor Shop</a>
+    <button class="navbar-toggler" onclick=@ToggleNavMenu>
+        <span class="navbar-toggler-icon"></span>
+    </button>
+</div>
+
+<div class=@(CollapseNavMenu ? "collapse" : null) onclick=@ToggleNavMenu>
+    <ul class="nav flex-column">
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="" Match=NavLinkMatch.All>
+                <span class="fa fa-home mx-1" aria-hidden="true"></span> Home
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="/shop/mens_outerwear/Men's Outerwear">
+                <span class="fa fa-mars mx-1" aria-hidden="true"></span> Men's Outerwear
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="/shop/ladies_outerwear/Ladies Outerwear">
+                <span class="fa fa-venus mx-1" aria-hidden="true"></span> Ladies Outerwear
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="/shop/mens_tshirts/Men's T-Shirts">
+                <span class="fa fa-mars-double mx-1" aria-hidden="true"></span> Men's T-Shirts
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="/shop/ladies_tshirts/Ladies T-Shirts">
+                <span class="fa fa-venus-double mx-1" aria-hidden="true"></span> Ladies T-Shirts
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="basket">
+                <span class="fa fa-shopping-basket mx-1" aria-hidden="true"></span>Basket<span class="badge badge-light m-1">@State.Basket.Sum(s => s.Quantity)</span>
+            </NavLink>
+        </li>
+    </ul>
+</div>

@@ -1,0 +1,38 @@
+@using DevCruise.Blazor.Shared
+@inherits DevCruise.Blazor.Client.Shared.Components.Code.SizeListComponent
+
+<form>
+    <div class="@FormClass">
+        @if (ShowLabel)
+        {
+            <label for="size" class="col-2 col-form-label">@Label</label>
+        }
+        <div class="col-auto">
+            @if (Page == PageEnum.Detail)
+            {
+                <select id="size" class="form-control" onchange=@SizeChanged>
+                    @foreach (var size in Enum.GetNames(typeof(SizeEnum)))
+                    {
+                        <option value="@size">@size</option>
+                    }
+                </select>
+            }
+            else
+            {
+                <select id="size" class="form-control" onchange=@SizeItemChanged>
+                    @foreach (var size in Enum.GetNames(typeof(SizeEnum)))
+                    {
+                        if (Item.Size == size)
+                        {
+                            <option value="@size" selected="selected">@size</option>
+                        }
+                        else
+                        {
+                            <option value="@size">@size</option>
+                        }
+                    }
+                </select>
+            }
+        </div>
+    </div>
+</form>

@@ -1,0 +1,42 @@
+@using DevCruise.Blazor.Shared
+@inherits DevCruise.Blazor.Client.Shared.Pages.Code.BasketComponent
+<div class="container">
+    <div class="row">
+        <div class="col-1"></div>
+        <div class="col-7">Description</div>
+        <div class="col-1">Quantity</div>
+        <div class="col-1">Size</div>
+        <div class="col-1">Price</div>
+        <div class="col-auto"></div>
+    </div>
+    <hr />
+    @foreach (var item in State.Basket)
+    {
+        <div class="row align-self-center">
+            <div class="col-1 align-self-center"><img class="img-fluid" src="@item.Image" /></div>
+            <div class="col-7 align-self-center">@item.Title</div>
+            <div class="col-1 align-self-center">
+                <QuantityListComponent Page="@PageEnum.Basket" Item="@item" FormClass="form-group row my-0" ParentItemCallback=@QuantityItemChanged></QuantityListComponent>
+            </div>
+            <div class="col-1 align-self-center">
+                <SizeListComponent Page="@PageEnum.Basket" Item="@item" FormClass="form-group row my-0" ParentItemCallback=@SizeItemChanged></SizeListComponent>
+            </div>
+            <div class="col-1 align-self-center">
+                @($"{item.Price:C2}")
+            </div>
+            <div class="col-auto align-self-center">
+                <button type="button" class="close" aria-label="Close" onclick="@(()=>RemoveBasketItem(item))">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        </div>
+    }
+    <hr />
+    <div class="row">
+        <div class="col-1 offset-8 align-self-center">Total</div>
+        <div class="col-1 align-self-center">@($"{State.Basket.Sum(s => s.Quantity * s.Price):C2}")</div>
+        <div class="col-auto align-self-center">
+            <a href="/checkout" class="btn btn-outline-dark rounded-0">CHECKOUT</a>
+        </div>
+    </div>
+</div>

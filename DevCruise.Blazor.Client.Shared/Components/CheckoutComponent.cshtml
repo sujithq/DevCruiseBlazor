@@ -1,0 +1,112 @@
+@inherits DevCruise.Blazor.Client.Shared.Components.Code.CheckoutComponent
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-auto text-center text-danger">
+            <h5>Checkout</h5>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-auto text-center text-danger">
+            <h6>This is a demo app - form data will not be sent</h6>
+        </div>
+    </div>
+</div>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <div class="row">
+                <form>
+                    <div class="form-group">
+                        <h5>Account Information</h5>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" class="form-control" placeholder="Email" bind="@Model.Email" />
+                        <ValidationErrorComponent Subject="@Model" Property="@nameof(Model.Email)"></ValidationErrorComponent>
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" class="form-control" placeholder="Phone Number" bind="@Model.Phone" />
+                        <ValidationErrorComponent Subject="@Model" Property="@nameof(Model.Phone)"></ValidationErrorComponent>
+                    </div>
+
+                    <AddressComponent Model="@Model"></AddressComponent>
+
+                    <AddressComponent IsBilling="true" Model="@Model"></AddressComponent>
+                </form>
+            </div>
+        </div>
+        <div class="col">
+            <form>
+                <div class="form-group">
+                    <h5>Payment Method</h5>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Cardholder Name" bind="@Model.CcName" />
+                    <ValidationErrorComponent Subject="@Model" Property="@nameof(Model.CcName)"></ValidationErrorComponent>
+
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Card Number" bind="@Model.CcNumber" />
+                    <ValidationErrorComponent Subject="@Model" Property="@nameof(Model.CcNumber)"></ValidationErrorComponent>
+
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <label>Expiry</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4">
+                        <div class="form-group">
+                            <MonthComponent Month="@Model.Month"></MonthComponent>
+                            <ValidationErrorComponent Subject="@Model" Property="@nameof(Model.Month)"></ValidationErrorComponent>
+
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="form-group">
+                            <YearComponent Year="@Model.Year"></YearComponent>
+                            <ValidationErrorComponent Subject="@Model" Property="@nameof(Model.Year)"></ValidationErrorComponent>
+
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="form-group">
+                            <input type="number" class="form-control" id="cvc" placeholder="CVC" bind="@Model.CVC" />
+                            <ValidationErrorComponent Subject="@Model" Property="@nameof(Model.CVC)"></ValidationErrorComponent>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <h5>Order Summary</h5>
+                </div>
+                <div>
+                    <table class="table small">
+                        <tbody>
+                            @foreach (var item in State.Basket)
+                            {
+                                <tr>
+                                    <th scope="row">@item.Title</th>
+                                    <td>@($"{item.Price * item.Quantity:C2}")</td>
+                                </tr>
+                            }
+                            <tr>
+                                <th scope="row">Total</th>
+                                <td>@($"{State.Basket.Sum(s => s.Quantity * s.Price):C2}")</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div>
+                    <button type="button" class="btn btn-outline-dark rounded-0" disabled="@HasErrrors" onclick="@PlaceOrder">PLACE ORDER</button>
+                </div>
+            </form>
+
+
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,39 @@
+@using DevCruise.Blazor.Shared
+@inherits DevCruise.Blazor.Client.Shared.Components.Code.QuantityListComponent
+<form>
+    <div class="@FormClass">
+        @if (ShowLabel)
+        {
+            <label for="quantity" class="col-2 col-form-label">@Label</label>
+        }
+        <div class="col-auto">
+            @if (Page == PageEnum.Detail)
+            {
+                <select id="quantity" class="form-control" onchange=@QuantityChanged>
+
+                    @for (var i = 1; i < 6; i++)
+                    {
+                        <option value="@i">@i</option>
+                    }
+
+                </select>
+            }
+            else
+            {
+                <select id="quantity" class="form-control" onchange=@QuantityItemChanged>
+                    @for (var i = 1; i < 6; i++)
+                    {
+                        if (Item.Quantity == i)
+                        {
+                            <option value="@i" selected="selected">@i</option>
+                        }
+                        else
+                        {
+                            <option value="@i">@i</option>
+                        }
+                    }
+                </select>
+            }
+        </div>
+    </div>
+</form>

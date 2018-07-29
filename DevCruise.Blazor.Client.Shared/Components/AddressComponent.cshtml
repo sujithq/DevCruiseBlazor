@@ -1,0 +1,51 @@
+﻿@inherits DevCruise.Blazor.Client.Shared.Components.Code.AddressComponent
+
+<div class="form-group">
+    <h5>@Label</h5>
+</div>
+
+
+@if (IsBilling)
+{
+    <div class="form-group form-check">
+        <input type="checkbox" class="form-check-input" id="differentBillingAddress" bind="@Model.UseOtherBilling" />
+        <label class="form-check-label" for="differentBillingAddress">Use different billing address</label>
+    </div>
+}
+
+@if (!IsBilling || IsBilling && Model.UseOtherBilling)
+{
+    <div class="form-group">
+        <input type="text" class="form-control" placeholder="Address" bind="@AddressModel.AddressLine" />
+        <ValidationErrorComponent Subject="@AddressModel" Property="@nameof(AddressModel.AddressLine)"></ValidationErrorComponent>
+    </div>
+    <div class="form-group">
+        <input type="text" class="form-control" placeholder="City" bind="@AddressModel.City" />
+        <ValidationErrorComponent Subject="@AddressModel" Property="@nameof(AddressModel.City)"></ValidationErrorComponent>
+    </div>
+
+    <div class="row">
+        <div class="col-6">
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="State/Province" bind="@AddressModel.StateProvince" />
+                <ValidationErrorComponent Subject="@AddressModel" Property="@nameof(AddressModel.StateProvince)"></ValidationErrorComponent>
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="Zip/Postal Code" bind="@AddressModel.ZipPostalCode" />
+                <ValidationErrorComponent Subject="@AddressModel" Property="@nameof(AddressModel.ZipPostalCode)"></ValidationErrorComponent>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="country">Country</label>
+        <select class="form-control" id="country" bind="@AddressModel.Country">
+            <option value="BE">Belgium</option>
+            <option value="NL">Netherlands</option>
+            <option value="LU">Luxembourg</option>
+        </select>
+        <ValidationErrorComponent Subject="@AddressModel" Property="@nameof(AddressModel.Country)"></ValidationErrorComponent>
+
+    </div>
+}

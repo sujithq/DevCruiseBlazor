@@ -1,0 +1,15 @@
+﻿@using System.Web
+@using Microsoft.AspNetCore.Blazor.Components
+@page "/detail/{category}/{id}"
+@addTagHelper *, DevCruise.Blazor.Client.Shared
+<DetailComponent Category="@Category" Id="@HttpUtility.UrlEncode(Id)"></DetailComponent>
+@functions
+{
+
+    [Parameter]
+    protected string Category { get; set; }
+
+    [Parameter]
+    protected string Id { get; set; }
+
+}
