@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Blazor.Components;
 
-namespace DevCruise.Blazor.Client.Shared.Components.Code
+namespace DevCruise.Blazor.Client.Shared.Components
 {
-    public class ShopAreaComponent : BlazorComponent
+    public class ShopAreaBase : BlazorComponent
     {
 
         [Parameter]

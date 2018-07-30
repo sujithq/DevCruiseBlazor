@@ -4,9 +4,9 @@ using Microsoft.AspNetCore.Blazor;
 using Microsoft.AspNetCore.Blazor.Components;
 //using BlazorRedux;
 
-namespace DevCruise.Blazor.Client.Shared.Components.Code
+namespace DevCruise.Blazor.Client.Shared.Components
 {
-    public class QuantityListComponent:BaseListComponent
+    public class QuantityListBase:BaseListComponent
     {
         [Parameter] protected Action<int> ParentCallback { get; set; }
         [Parameter] protected Action<BasketItem, int> ParentItemCallback { get; set; }

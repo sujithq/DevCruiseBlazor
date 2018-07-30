@@ -1,9 +1,9 @@
 ﻿using BlazorRedux;
 using DevCruise.Blazor.Shared;
 
-namespace DevCruise.Blazor.Client.Shared.Components.Code
+namespace DevCruise.Blazor.Client.Shared.Components
 {
-    public class BasketComponent : ReduxComponent<MyStateBase, IAction>
+    public class BasketBase : ReduxComponent<MyStateBase, IAction>
     {
         public void RemoveBasketItem(BasketItem item)
         {

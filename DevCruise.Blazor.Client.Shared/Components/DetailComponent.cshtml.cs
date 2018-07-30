@@ -6,9 +6,9 @@ using Microsoft.AspNetCore.Blazor;
 using Microsoft.AspNetCore.Blazor.Components;
 using Microsoft.AspNetCore.Blazor.Services;
 
-namespace DevCruise.Blazor.Client.Shared.Components.Code
+namespace DevCruise.Blazor.Client.Shared.Components
 {
-    public class DetailComponent : BaseCallApi
+    public class DetailBase : BaseCallApi
     {
         [Parameter]
         private string Category { get; set; }

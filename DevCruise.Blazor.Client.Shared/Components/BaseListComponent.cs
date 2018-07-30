@@ -3,7 +3,7 @@
 using DevCruise.Blazor.Shared;
 using Microsoft.AspNetCore.Blazor.Components;
 
-namespace DevCruise.Blazor.Client.Shared.Components.Code
+namespace DevCruise.Blazor.Client.Shared.Components
 {
     public class BaseListComponent:BlazorComponent// ReduxComponent<MyState, IAction>
     {

@@ -5,9 +5,9 @@ using DevCruise.Blazor.Shared;
 using Microsoft.AspNetCore.Blazor;
 using Microsoft.AspNetCore.Blazor.Components;
 
-namespace DevCruise.Blazor.Client.Shared.Components.Code
+namespace DevCruise.Blazor.Client.Shared.Components
 {
-    public class ShopComponent : ReduxComponent<MyStateBase,IAction>
+    public class ShopBase : ReduxComponent<MyStateBase,IAction>
     {
         [Parameter]
         protected string Source { get; set; }

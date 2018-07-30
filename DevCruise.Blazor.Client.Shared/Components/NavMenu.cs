@@ -1,8 +1,8 @@
 ﻿using BlazorRedux;
 
-namespace DevCruise.Blazor.Client.Shared.Components.Code
+namespace DevCruise.Blazor.Client.Shared.Components
 {
-    public class NavMenu : ReduxComponent<MyStateBase, IAction>
+    public class NavMenuBase : ReduxComponent<MyStateBase, IAction>
     {
         protected bool CollapseNavMenu { get; set; } = true;
 
