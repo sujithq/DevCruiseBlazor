@@ -1,8 +1,8 @@
 version: '3.4'
 
 services:
-  devcruise.blazor.serverside.server:
-    image: ${DOCKER_REGISTRY}devcruiseblazorserversideserver
+  devcruise.blazor.hosted.server:
+    image: ${DOCKER_REGISTRY}devcruiseblazorhostedserver
     build:
       context: .
-      dockerfile: DevCruise.Blazor.Serverside.Server/Dockerfile
+      dockerfile: DevCruise.Blazor.Hosted.Server/Dockerfile

@@ -1,7 +1,7 @@
 version: '3.4'
 
 services:
-  devcruise.blazor.serverside.server:
+  devcruise.blazor.hosted.server:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
     ports:
