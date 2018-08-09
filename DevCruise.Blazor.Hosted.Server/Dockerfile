@@ -13,7 +13,7 @@ ADD DevCruise.Blazor.Hosted.Server DevCruise.Blazor.Hosted.Server
 
 WORKDIR /src/DevCruise.Blazor.Hosted.Server
 
-#RUN dotnet build DevCruise.Blazor.Hosted.Server.csproj -c Release -o /app
+RUN dotnet restore DevCruise.Blazor.Hosted.Server.csproj
 
 FROM build AS publish
 RUN dotnet publish DevCruise.Blazor.Hosted.Server.csproj -c Release -o /app
